@@ -1,0 +1,23 @@
+<h1 id="tableLabel">Notes</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!notes"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="notes">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of notes">
+      <td>{{ note.id }}</td>
+      <td>{{ note.name }}</td>
+      <td><button class="btn btn-danger" type="button" (click)="deleteNote(note.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<app-add-note [noteList]="notes"></app-add-note>

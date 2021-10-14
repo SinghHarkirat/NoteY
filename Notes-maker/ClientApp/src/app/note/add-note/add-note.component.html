@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Add note
+    </div>
+    <div class="card-body">
+        <form [formGroup]="noteForm" (ngSubmit)="addNote()">
+            <div class="col-md-6">
+                <label for="notetext">
+                    Name
+                </label>
+               
+            </div>
+           <div class="col-md-6">
+            <input type="text" id="notetext" formControlName="noteText"
+            [ngClass]="{'is-invalid':noteForm.controls['noteText'].touched && noteForm.controls['noteText'].invalid }">
+            <small class="text-danger" *ngIf="noteForm.controls['noteText'].errors?.required && (noteForm.controls['noteText'].touched || noteForm.controls['noteText'].dirty)">Name is required</small>
+            <small class="text-danger" *ngIf="noteForm.controls['noteText'].errors?.minlength && (noteForm.controls['noteText'].touched || noteForm.controls['noteText'].dirty)">Name should be atleast 2 characters long</small>
+            &nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!noteForm.valid">
+                Add
+            </button>
+           </div>
+           
+
+        </form>
+   
+    </div>
+</div>
